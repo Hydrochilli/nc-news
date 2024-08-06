@@ -11,7 +11,7 @@ function ArticlesPage() {
         const fetchArticles = async () => {
             try {
                
-               const response = await axios.get('http://localhost:9090/api/articles')
+               const response = await axios.get('https://sams-news.onrender.com/api/articles')
             
                setArticles(response.data.articles)
               
