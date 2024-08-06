@@ -2,7 +2,7 @@ import React from 'react';
 import ArticlesItem from './ArticlesItem'
 
 function ArticlesList({articles}) {
-console.log('rendering articlesList with articles', articles)
+
     return (
         <div className="articles-list">
             {articles.map(article => (
