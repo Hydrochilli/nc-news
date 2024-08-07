@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 import ArticlesList from './ArticlesList'
+import {fetchAllArticles} from './api-utils'
 
 function ArticlesPage() {
     const [articles, setArticles] = useState([])
@@ -11,9 +12,8 @@ function ArticlesPage() {
         const fetchArticles = async () => {
             try {
                
-               const response = await axios.get('https://sams-news.onrender.com/api/articles')
-            
-               setArticles(response.data.articles)
+               const response = await fetchAllArticles()
+               setArticles(response)
               
                 setLoading(false)
             } catch (err) {
@@ -28,7 +28,7 @@ function ArticlesPage() {
         }, [])
 
         if (loading) return <p>Loading..</p>
-        if(error) return <p>Error: {error}</p>
+        if(error) return <p>An Error occured; {error}</p>
 
         return (
             <div>
