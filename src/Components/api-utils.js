@@ -16,3 +16,8 @@ export const fetchAllArticles = async() => {
     const response = await axios.get(`${BASE_URL}/articles`)
     return response.data.articles
 }
+
+export const voteOnComment = async(comment_id, voteChange) => {
+    const response = await axios.patch(`${BASE_URL}/comments/${comment_id}`, {inc_votes: voteChange})
+    return response.data.comment
+}
