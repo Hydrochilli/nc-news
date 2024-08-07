@@ -4,8 +4,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red; 
-  height: 60px; 
+  background-color: rgb(241, 8, 8); 
+  height: 80px; 
   width: 100%
 }
 
@@ -13,7 +13,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blue; 
+  background-color: rgb(241, 8, 8); 
   height: 60px; 
   position:absolute;
   
