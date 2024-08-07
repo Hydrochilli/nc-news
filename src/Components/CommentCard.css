@@ -5,15 +5,31 @@
     padding: 10px;
     margin: 10px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+   
+
+    
+  box-sizing: border-box;
+
 }
+
 
 .comment-author {
     font-weight: bold;
-    margin-bottom: 5px;
+    
+
 }
 
 .comment-body {
     margin-bottom: 5px;
+      
+  overflow-wrap:break-word;
+  
+
+
+    
+
+ 
+  
 }
 
 .comment-votes {

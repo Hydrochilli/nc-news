@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import CommentCard from './CommentCard'
 import { fetchCommentsByArticleId} from './api-utils'
+import CommentForm from './CommentForm'
+import './CommentList.css'
+import './CommentCard.css'
 
 function CommentList({ articleId}) {
     const [comments, setComments] = useState([])
@@ -34,7 +37,8 @@ function CommentList({ articleId}) {
   
     return (
         <div className="comment-list">
-        <h3>comments</h3>    
+          <h3>comments</h3>    
+          <CommentForm articleId={articleId} onCommentPosted={fetchComments}/>
             {comments.map(comment => (
                 <CommentCard key={comment.comment_id} comment={comment} onVote={fetchComments} />
             ))}

@@ -4,12 +4,14 @@ import{fetchArticleById, fetchCommentsByArticleId} from './api-utils.js'
 import axios from 'axios'
 import './ArticleDetailPage.css'
 import CommentList from './CommentList'
+import CommentForm from './CommentForm.jsx'
 
 function ArticleDetailPage() {
     const { article_id} = useParams()
     const [article, setArticle] = useState(null)
     const [articleLoading, setArticleLoading] = useState(true)
     const [articleError, setArticleError] = useState(null)
+    const [showCommentForm, setShowCommentForm] = useState(false)
   
 
    
@@ -50,7 +52,14 @@ function ArticleDetailPage() {
           <p>{article.body}</p>
           <p className='votes'>{article.votes} votes</p>
           <p className='comments'>{article.comment_count} comments</p>
-          <CommentList articleId={article_id}/>    
+           
+          {showCommentForm ? (
+            <CommentForm articleId={article_id} onCommentPosted={handleCommentPosted} />
+          ) : (
+            <CommentList articleId={article_id}/>   
+          
+         
+          )}
         </div> 
       ) }
           

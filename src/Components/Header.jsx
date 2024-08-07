@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './Header.css'
-export default function Header({ setCategory }) {
-
+import {UserContext} from './UserContext'
+export default function Header() {
+ const {user} = useContext(UserContext)
    
   return (
     <header>
-      <h1>hi from header</h1>
+      <h1>NC News</h1>
+      {user && <p>{user.username} is Logged in</p>}
     
     </header>
   );

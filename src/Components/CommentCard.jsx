@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './CommentCard.jsx'
+
 import  './CommentCard.css'
 import { voteOnComment} from './api-utils'
 

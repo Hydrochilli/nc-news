@@ -1,21 +1,33 @@
 
 
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(241, 8, 8); 
-  height: 80px; 
-  width: 100%
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
 }
 
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(241, 8, 8); 
-  height: 60px; 
-  position:absolute;
-  
   width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+footer p {
+  margin: 0;
 }
