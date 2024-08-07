@@ -8,57 +8,52 @@ import CommentList from './CommentList'
 function ArticleDetailPage() {
     const { article_id} = useParams()
     const [article, setArticle] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [comments, setComments] = useState([])
+    const [articleLoading, setArticleLoading] = useState(true)
+    const [articleError, setArticleError] = useState(null)
+  
 
-    useEffect(() => {
+   
         const fetchArticle = async () => {
            try {
             const fetchedArticle = await fetchArticleById(article_id)
             setArticle(fetchedArticle)
-            setLoading(false)
+            setArticleLoading(false)
            }catch(err) {
-                setError(err.message)
-                setLoading(false)
+          
+                setArticleError(err.message)
+                setArticleLoading(false)
             }
            };
 
-        const fetchComments = async() => {
-          try {
-            const fetchedComments = await fetchCommentsByArticleId(article_id)
-            setComments(fetchedComments)
-            setLoading(false)
-          }catch(err) {
-            setError(err.message)
-            setLoading(false)
-          }
-        }
+        useEffect(() => {
            fetchArticle()
-           fetchComments()
+      
 
 
         }, [article_id])
+
         
 
-        if (loading) return <p>Loading..</p>
-        if(error) return <p>Error: {error}</p>
+        if (articleLoading) return <p>Loading..</p>
+        if(articleError) return <p>Error: {articleError}</p>
+       
+        
+      
+        
 
         return (
+     
         <div className="article-detail">
-          {article && (
-      <>
           <h2>{article.title}</h2>
           <p className="votes">by {article.author}</p>
           <img src={article.article_img_url} alt={article.title} />
           <p>{article.body}</p>
           <p className='votes'>{article.votes} votes</p>
           <p className='comments'>{article.comment_count} comments</p>
-      </>
-        
-          )}
-          <CommentList comments={comments} />
-      </div>
-        )
-      }
+          <CommentList articleId={article_id}/>    
+        </div> 
+      ) }
+          
+     
+      
 export default ArticleDetailPage
