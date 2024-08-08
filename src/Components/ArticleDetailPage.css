@@ -7,23 +7,26 @@
     padding-left: 140PX;
     padding-right: 140px;
     background-color: #fff;
-   
+    
    
     color:black;
+    width:fit-content;
   }
   
   .article-detail img {
-    width: 24%;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
+    display:flex;
+   
   }
   
   .article-detail h2 {
     font-size: 2.5em;
     padding-top: 60px;
     color:black;
-    width: 26%;
+    width: 100%;
 
   }
   
@@ -31,6 +34,7 @@
     font-size: 1.2em;
     color: black;
     margin-bottom: 20px;
+    
   }
   
   .article-detail p {
@@ -38,7 +42,8 @@
     line-height: 1.6;
     margin-bottom: 20px;
     color:black;
-    width: 24%;
+   
+   
   }
   
   .article-detail p.votes,
@@ -50,5 +55,6 @@
   
   .article-detail p.comments {
     margin-bottom: 0;
+  
   }
   

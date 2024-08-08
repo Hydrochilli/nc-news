@@ -11,11 +11,7 @@ import {UserProvider} from './Components/UserContext'
 
 
 function App() {
-      const [loggedInUser, setLoggedInUser] = useState(null)
-
-      const handleLogin = (user) => {
-        setLoggedInUser(user)
-      }
+    
   return (
   
  <UserProvider>
@@ -26,7 +22,7 @@ function App() {
          <Route path="/" element={<ArticlesPage/>} />
          <Route path="/articles" element={<ArticlesPage/>} />
          <Route path="/articles/:article_id" element={<ArticleDetailPage/>} />
-         <Route path="/users" element={<UserList onLogin={handleLogin} />} />
+         <Route path="/users" element={<UserList/>} />
         </Routes>
        </div>
       <Footer/>

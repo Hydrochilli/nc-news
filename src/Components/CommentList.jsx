@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import CommentCard from './CommentCard'
 import { fetchCommentsByArticleId} from './api-utils'
 import CommentForm from './CommentForm'
 import './CommentList.css'
 import './CommentCard.css'
+import {UserContext} from './UserContext'
 
 function CommentList({ articleId}) {
     const [comments, setComments] = useState([])
     const [commentsLoading, setCommentsLoading] = useState(true)
     const [commentsError, setCommentsError] = useState(null)
+    const { user } = useContext(UserContext)
      
 
     const fetchComments = async() => {
@@ -28,6 +30,14 @@ function CommentList({ articleId}) {
         fetchComments()
 
       }, [articleId])
+
+      const handleDelete = (commentId) => {
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.comment_id !== commentId)
+    )
+   }
+
+
   
       if (commentsLoading) return <p>Loading comments...</p>
       if (commentsError) return <p>Error: {commentsError}</p>
@@ -38,9 +48,9 @@ function CommentList({ articleId}) {
     return (
         <div className="comment-list">
           <h3>comments</h3>    
-          <CommentForm articleId={articleId} onCommentPosted={fetchComments}/>
+          
             {comments.map(comment => (
-                <CommentCard key={comment.comment_id} comment={comment} onVote={fetchComments} />
+                <CommentCard key={comment.comment_id} comment={comment} onVote={fetchComments} onDelete={handleDelete} />
             ))}
         </div>
     )

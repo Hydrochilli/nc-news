@@ -30,6 +30,10 @@ export const postComment = async (article_id, commentData) => {
     return response.data.comment
 
 }
+export const deleteComment = async (comment_id) => {
+    const response = await axios.delete(`${BASE_URL}/comments/${comment_id}`)
+    return response.data
+}
 
 export const fetchAllUsers = async () => {
     const response = await axios.get(`${BASE_URL}/users`)

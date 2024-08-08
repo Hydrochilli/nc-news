@@ -1,11 +1,16 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 
 import  './CommentCard.css'
-import { voteOnComment} from './api-utils'
+import { voteOnComment, deleteComment} from './api-utils'
+import { UserContext } from './UserContext'
+import {Link} from 'react-router-dom'
 
-function CommentCard({comment, onVote}) {
+function CommentCard({comment, onVote, onDelete}) {
+    const {user} = useContext(UserContext)
     const [votes, setVotes] = useState(comment.votes)
     const [voteError, setVoteError] = useState(null)
+    const [deleting, setDeleting] = useState(false)
+    const [deleteError, setDeleteError] = useState(null)
 
     const voteHandler = async(voteChange) => {
         setVotes((prevVotes) => prevVotes + voteChange)
@@ -22,14 +27,42 @@ function CommentCard({comment, onVote}) {
     }
 }
 
+const deleteHandler = async () => {
+    setDeleting(true)
+
+    try{
+        await deleteComment(comment.comment_id)
+        onDelete(comment.comment_id)
+        
+    }catch (err) {
+        setDeleting(false)
+        setDeleteError('Failed to dlete comment. Please try again')
+    }
+}
+
     return (
         <div className="comment-card">
             <p className="comment-author"> by {comment.author}</p>
             <p  className="comment-body">{comment.body}</p>
-            <p className="comment-votes">{comment.votes} votes</p>
-            <button onClick={() => voteHandler(1)}>Up</button>
-            <button onClick={() => voteHandler(-1)}>Down</button>
-            {voteError&& <p style={{ color: 'red'}}>{voteError}</p>}
+            <p className="comment-votes">{votes} votes</p>
+            {user ? (
+              <>    
+                 <button onClick={() => voteHandler(1)}>Up</button>
+                 <button onClick={() => voteHandler(-1)}>Down</button>
+              </> 
+          ) : (
+            <p>
+                <Link to ="/users">Login</Link> to vote
+            </p>
+            )}
+            {user && user.username === comment.author && (
+                <button onClick={deleteHandler} disabled= {deleting}>
+                    {deleting ? 'Deleting...' : 'Delete'}
+                </button>
+            )}
+
+            {voteError && <p style={{ color: 'red'}}>{voteError}</p>}
+            {deleteError && <p style={{ color: red}}>{deleteError}</p>}
 
         </div>
     )
