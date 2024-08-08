@@ -3,13 +3,14 @@
 .article-detail {
    
     margin: 20 auto;
-    padding-top: 10px;
+    padding-top: 40px;
     padding-left: 140PX;
     padding-right: 140px;
     background-color: #fff;
-   
+    
    
     color:black;
+    width:fit-content;
   }
   
   .article-detail img {
@@ -17,18 +18,23 @@
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
+    display:flex;
+   
   }
   
   .article-detail h2 {
     font-size: 2.5em;
-    margin-bottom: 10px;
-    color:black
+    padding-top: 60px;
+    color:black;
+    width: 100%;
+
   }
   
   .article-detail p.author {
     font-size: 1.2em;
     color: black;
     margin-bottom: 20px;
+    
   }
   
   .article-detail p {
@@ -36,6 +42,8 @@
     line-height: 1.6;
     margin-bottom: 20px;
     color:black;
+   
+   
   }
   
   .article-detail p.votes,
@@ -47,5 +55,6 @@
   
   .article-detail p.comments {
     margin-bottom: 0;
+  
   }
   

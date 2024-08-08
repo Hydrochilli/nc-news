@@ -1,15 +1,20 @@
-import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-import{fetchArticleById, fetchCommentsByArticleId} from './api-utils.js'
+import React, {useContext, useState, useEffect} from 'react'
+import {useParams, Link} from 'react-router-dom'
+import{fetchArticleById} from './api-utils.js'
 import axios from 'axios'
 import './ArticleDetailPage.css'
 import CommentList from './CommentList'
+import CommentForm from './CommentForm.jsx'
+import './CommentCard.css'
+import {UserContext} from './UserContext'
 
 function ArticleDetailPage() {
     const { article_id} = useParams()
     const [article, setArticle] = useState(null)
     const [articleLoading, setArticleLoading] = useState(true)
     const [articleError, setArticleError] = useState(null)
+   
+    const {user} = useContext(UserContext)
   
 
    
@@ -50,7 +55,20 @@ function ArticleDetailPage() {
           <p>{article.body}</p>
           <p className='votes'>{article.votes} votes</p>
           <p className='comments'>{article.comment_count} comments</p>
-          <CommentList articleId={article_id}/>    
+          
+          {user ? ( 
+          
+            <CommentForm articleId={article_id} onCommentPosted={() => fetchArticle()}/>
+          ) : (
+            <p>
+              <Link to="/users">Login</Link> to comment
+            </p>
+              
+          
+         
+          )}
+          
+          <CommentList articleId={article_id}/> 
         </div> 
       ) }
           

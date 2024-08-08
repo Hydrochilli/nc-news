@@ -21,3 +21,21 @@ export const voteOnComment = async(comment_id, voteChange) => {
     const response = await axios.patch(`${BASE_URL}/comments/${comment_id}`, {inc_votes: voteChange})
     return response.data.comment
 }
+
+export const postComment = async (article_id, commentData) => {
+
+    console.log('postin comment:', commentData)
+    const response = await axios.post(`${BASE_URL}/articles/${article_id}/comments`, commentData)
+    console.log('Comment posted:', response.data);
+    return response.data.comment
+
+}
+export const deleteComment = async (comment_id) => {
+    const response = await axios.delete(`${BASE_URL}/comments/${comment_id}`)
+    return response.data
+}
+
+export const fetchAllUsers = async () => {
+    const response = await axios.get(`${BASE_URL}/users`)
+    return response.data.users
+}

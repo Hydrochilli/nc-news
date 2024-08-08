@@ -5,16 +5,33 @@
     padding: 10px;
     margin: 10px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width:1000px;
+   
+
+    
+  
+
 }
+
 
 .comment-author {
     font-weight: bold;
-    margin-bottom: 5px;
+    
+
 }
 
 .comment-body {
     margin-bottom: 5px;
+    overflow-wrap: break-word; 
+   width:100%;
+ 
+
+  ;
+  
+  
 }
+
+
 
 .comment-votes {
     font-size: 0.9em;
