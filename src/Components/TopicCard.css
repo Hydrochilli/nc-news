@@ -1,0 +1,24 @@
+.topic-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.topic-card h3 {
+    margin-top: 0;
+    color:black;
+}
+
+.topic-card p {
+     color:black;
+     margin: 10px 0;
+   
+}
+
+.topic-card a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

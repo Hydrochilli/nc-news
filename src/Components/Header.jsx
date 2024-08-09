@@ -10,7 +10,8 @@ export default function Header() {
       <h1><Link to="/" className="home-link">NC News</Link></h1>
       <nav>
         <Link to="/articles" className="nav-link">Articles</Link>
-        <Link to="/users" className="nav-lonk">Users</Link>
+        <Link to="/users" className="nav-link">Users/Log-in</Link>
+        <Link to="/topics" className="nav-link">Topics</Link>
       </nav>
       {user && (
         <div className="user-info">

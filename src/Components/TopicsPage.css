@@ -1,0 +1,15 @@
+.topics-page {
+    padding: 20px;
+    color: black;
+}
+
+.topics-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color:black;
+}
+
+select {
+    margin-bottom: 20px;
+}
