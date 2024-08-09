@@ -15,8 +15,9 @@ export default function Header() {
       </nav>
       {user && (
         <div className="user-info">
-          <img src={user.avatar_url} alt={`${user.username}'s avatar`} className="avatar" />
           <p> welcome {user.username}</p>
+          <img src={user.avatar_url} alt={`${user.username}'s avatar`} className="avatar" />
+          
         </div>
       )}
     
