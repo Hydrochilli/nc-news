@@ -11,6 +11,8 @@ body {
 
 .main-content{
   flex:1;
+  margin-top: 0px;
+  padding-top: 45px;
 }
 
 .articles-list {

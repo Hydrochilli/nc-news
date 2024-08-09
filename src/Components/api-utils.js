@@ -12,9 +12,18 @@ export const fetchCommentsByArticleId = async(article_id) => {
     return response.data.comments
 }
 
-export const fetchAllArticles = async() => {
-    const response = await axios.get(`${BASE_URL}/articles`)
+export const fetchAllArticles = async(sort_by = 'created_at', order = 'desc') => {
+   try{ 
+     const params = {}
+    if( sort_by  !== 'comment_count' ) {
+        params.sort_by = sort_by
+        params.order= order
+       }
+   const response = await axios.get(`${BASE_URL}/articles`, {params})
     return response.data.articles
+} catch(error) {
+    throw error
+}
 }
 
 export const voteOnComment = async(comment_id, voteChange) => {
@@ -44,12 +53,21 @@ export const fetchAllTopics = async () => {
     const response = await axios.get(`${BASE_URL}/topics`)
     return response.data.topics
 }
-export const fetchArticlesByTopic = async(topic) => {
-    console.log('Selected topic:', topic)
+export const fetchArticlesByTopic = async(topic, sort_by = 'created_at', order = 'desc') => {
+  
     try{
-    const response = await axios.get(`${BASE_URL}/articles`, {
-        params: {topics: topic && topic !== 'all' ? topic : undefined}
-    })
+    
+       const params = {
+            topics: topic && topic !== 'all' ? topic : undefined
+       }
+
+           if( sort_by  !== 'comment_count' ) {
+             params.sort_by = sort_by
+             params.order= order
+            }
+    
+    const response = await axios.get(`${BASE_URL}/articles`, { params })
+    console.log('fetched articles:', response.data.articles)
     return response.data.articles
 } catch (error) {
     throw error
