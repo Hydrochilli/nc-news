@@ -39,3 +39,19 @@ export const fetchAllUsers = async () => {
     const response = await axios.get(`${BASE_URL}/users`)
     return response.data.users
 }
+
+export const fetchAllTopics = async () => {
+    const response = await axios.get(`${BASE_URL}/topics`)
+    return response.data.topics
+}
+export const fetchArticlesByTopic = async(topic) => {
+    console.log('Selected topic:', topic)
+    try{
+    const response = await axios.get(`${BASE_URL}/articles`, {
+        params: {topics: topic && topic !== 'all' ? topic : undefined}
+    })
+    return response.data.articles
+} catch (error) {
+    throw error
+}
+}
