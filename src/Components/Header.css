@@ -2,7 +2,7 @@
 
 header {
   display:flex;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
   width: 100%;
   background-color: red;
@@ -55,3 +55,31 @@ footer p {
   margin-right: 10px;
 }
 
+
+@media (min-width: 768px) {
+  .menu-button {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .nav-link {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    justify-content: center;
+    ;
+    
+  ;
+  }
+.menu-button{
+  display:flex;
+  padding-left: 10px;
+   
+
+}
+}

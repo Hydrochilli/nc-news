@@ -1,7 +1,8 @@
 
 
 .article-detail {
-   
+  
+    
     margin: 20 auto;
     padding-top: 40px;
     padding-left: 140PX;
@@ -38,6 +39,7 @@
   }
   
   .article-detail p {
+    
     font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 20px;

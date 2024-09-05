@@ -20,6 +20,7 @@ function App() {
  <UserProvider>
      <BrowserRouter>
       <Header />
+     
        <div className="main-content">
         <Routes>
          <Route path="/" element={<ArticlesPage/>} />
